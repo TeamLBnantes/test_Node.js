@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Mes stats</title>
+        <style>
+            a {text-decoration: none; color: black;}
+        </style>
+    </head>
+
+    <body>
+        <h1>Suivi parcours</h1>
+        attention, en l'etat, respecter svp le format des dates et Heures suivant : <br>
+		aaaa-m-jThh:mm:ss.sssZ    , ex 2020-7-3T16:38:15.000Z  ou encore 2020-11-13T16:18:15.000Z
+
+        <form action="/parcours/" method="post">
+            <p>
+				<label for="name">Nom du participant ?</label>
+                <input type="text" name="name" id="name" value="<%= participant %>" autofocus/>
+				<label for="start">start ?</label>
+                <input type="text" name="start" id="start"  style="width: 150px" value="<%= start %>"/>
+				<label for="stop">stop ?</label>
+                <input type="text" name="stop" id="stop"  style="width: 150px" value="<%= stop %>" />
+                <input type="submit" />
+            </p>
+        </form>
+        <br>
+		
+		Valeurs Enregistrées par l'iot : 
+		<br><br>
+		
+       nom du participant :  <%= participant %> <br>
+       heure de début : <%= start %><br>
+       heure de fin : <%= stop %><br>
+       <br>
+ <table border="1px solid #FF6600">
+    <thead>
+        <th width="30px" align="center">num</th>
+        <th width="150px" align="center">Date-heure </th>
+        <th width="70px" align="center">altitude</th>
+        <th width="100px" align="center">vitesse</th>
+		<th width="100px" align="center">Latitude</th>  
+		<th width="100px" align="center">Longitude</th> 
+		<th width="200px" align="center">Date-heure machine</th>
+<!--         <th>longitude</th>
+        <th>latitude</th> -->
+    </thead>
+    <tbody>
+        <% points.forEach(function(point, index) { %>
+            <tr> 
+                <% point.forEach(function(pt) { %>
+                    <td align="center"> <%= pt %></td>
+                <% }); %> 
+            
+            </tr>
+        <% }); %>
+    </tbody>
+</table> 
+<br>
+
+
+
